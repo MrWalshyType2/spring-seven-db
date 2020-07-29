@@ -22,9 +22,6 @@ import com.example.service.StudentService;
 public class StudentController {
 	
 	@Autowired
-	StudentRepository sRepo;
-	
-	@Autowired
 	StudentService sService;
 	
 	@GetMapping(value="/all", produces="application/json")
