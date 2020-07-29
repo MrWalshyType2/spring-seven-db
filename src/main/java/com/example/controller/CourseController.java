@@ -14,41 +14,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.entity.Course;
 import com.example.entity.Student;
-import com.example.repository.StudentRepository;
+import com.example.service.CourseService;
 import com.example.service.StudentService;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/student")
-public class StudentController {
+@RequestMapping("/course")
+public class CourseController {
 	
 	@Autowired
-	StudentService sService;
+	CourseService cService;
 	
 	@GetMapping(value="/all", produces="application/json")
-	public List<Student> getAllRecords() {
-		return sService.readAll();
+	public List<Course> getAllRecords() {
+		return cService.readAll();
 	}
 	
 	@GetMapping(value="/{id}", produces="application/json")
-	public Optional<Student> getRecord(@PathVariable int id) {
-		return sService.readById(id);
+	public Optional<Course> getRecord(@PathVariable int id) {
+		return cService.readById(id);
 	}
 
 	@PostMapping(produces="application/json")
-	public void saveRecord(@RequestBody Student s) {
-		sService.create(s);
+	public void saveRecord(@RequestBody Course c) {
+		cService.create(c);
 	}
 	
 	@PutMapping(produces="application/json")
-	public void updateRecord(@RequestBody Student s) {
-		sService.update(s);
+	public void updateRecord(@RequestBody Course c) {
+		cService.update(c);
 	}
 	
 	@DeleteMapping(value="/{id}")
 	public void deleteRecord(@PathVariable int id) {
-		sService.deleteById(id);
+		cService.deleteById(id);
 	}
-	
 }
